@@ -85,7 +85,7 @@ func _process(_delta):
 func init_client_starts_wait() -> void:
 	waiting_for_client_starts = true
 	for player in tracked_players:
-		if not player != self_peer_id:
+		if player != self_peer_id:
 			tracked_players[player].in_game = false
 	receive_client_start(self_peer_id)
 
@@ -143,7 +143,7 @@ func receive_client_start(player_id) -> void:
 	
 	var done_waiting = true
 	for player in tracked_players:
-		if not player != self_peer_id:
+		if player != self_peer_id:
 			if not tracked_players[player].in_game:
 				done_waiting = false
 				break
